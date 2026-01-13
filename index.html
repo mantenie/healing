@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <meta name="title" content="WorkAdventure Starter Kit">
-    <title>WorkAdventure test map</title>
+    <meta name="title" content="Heilungsgebet">
+    <title>Heilungsgebet</title>
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
     <script>
         window.onload = function () {
@@ -17,187 +17,150 @@
                 path = path.substr(path, path.length - 'index.html'.length);
             }
             const instanceId = Math.random().toString(36).substring(2, 15);
-            const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}office.tmj`;
-            document.getElementById('testMapURL').href = url;
-            document.getElementById('testMapBtnURL').href = url;
-            document.getElementById('testMapURL').innerText = url;
-
-            const tmjURL = window.location.protocol + '//' + window.location.host + path + 'office.tmj';
-            document.getElementById('tmjURL').innerText = tmjURL;
-
-            const gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl=' + tmjURL;
-            document.getElementById('gettingStartedLink').href = gettingStartedLink;
-
+            const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}healingroom.tmj`;
+            document.getElementById('enterRoomURL').href = url;
         };
     </script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         html, body {
-        height: 100%;
-        }
-        body {
-        display: flex;
-        flex-direction: column;
-        }
-        .content {
-        flex: 1 0 auto;
-        }
-        footer {
-        flex-shrink: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: Roboto Condensed,Arial;
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffffff;
             text-align: center;
-        }
-        
-        header {
-            margin: 30px;
+            padding: 20px;
         }
 
-        header .logo {
-            display: block;
-            position: relative;
+        .container {
+            max-width: 600px;
         }
 
-        header .logo img {
-            display: block;
-            width: 500px;
-            margin: auto;
-            text-align: center;
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
         }
 
-        h1,
-        h2 {
-            font-weight: bold;
-            font-size: 1.3rem;
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 3rem;
         }
 
-        section {
-            margin-top: 3rem;
+        .description {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 3rem;
         }
 
-        .tips {
-            font-size: 0.8rem;
-            font-style: italic;
-        }
-
-        .socials img {
-            width: 30px;
-            height: 30px;
-        }
-
-        .socials > a {
+        .enter-button {
             display: inline-block;
-            margin: 20px 5px;
-        }
-
-        a.button {
-            display: inline-block;
-            padding: 13px 20px 12px;
-            background-color: rgba(65, 86, 246, 0.9);
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border-radius: 8px;
-            font-weight: bold;
+            border-radius: 50px;
+            font-weight: 600;
             text-transform: uppercase;
             text-decoration: none;
-            text-align: center;
-            width: auto;
-            position: relative;
-            font-size: 1.3em;
+            font-size: 1.1em;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
 
-        a.button:hover {
-            background-color: rgb(65, 86, 246);
-            cursor: pointer;
+        .enter-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
 
-        .map {
-            width: 30%;
-            margin-bottom: 3%;
-            min-width: 200px;
+        .info {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            opacity: 0.6;
         }
 
-        .url-box {
-            border: 1px solid rgb(65, 86, 246);
-            border-radius: 3px;
-            padding: 3px;
-            background-color: rgba(65, 86, 246, 0.1);
-        }
-        .url {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 14px;
+        .rooms {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
         }
 
-        footer {
-            display: block;
-            padding: 2rem 5vw;
+        .room-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            width: 150px;
+            backdrop-filter: blur(10px);
+        }
+
+        .room-card h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .room-card p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .room-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div class="content">
-        <header>
-            <div class="logo">
-                <a href="https://workadventu.re/" target="_blank" title="Workadventure">
-                    <img src="/images/logo.svg" alt="WorkAdventure logo" />
-                </a>
+    <div class="container">
+        <h1>✝ Heilungsgebet</h1>
+        <p class="subtitle">Raum für heilendes Gebet</p>
+
+        <div class="rooms">
+            <div class="room-card">
+                <div class="room-icon">📺</div>
+                <h3>Video-Raum</h3>
+                <p>Einführungsvideo</p>
             </div>
-        </header>
-        <main>
-            <section>
-                <h2>Test my map</h2>
-                <p><a id="testMapURL" href="#" class="url"></a></p>
-                <p class="tips">(In order to test another map, locate "office.tmj" at the end of the URL and replace it by another file name)</p>
-                <img src="/office.png" alt="Map thumbnail" class="map">
-                <p><a id="testMapBtnURL" href="#" class="button">Test my map</a></p>
-            </section>
+            <div class="room-card">
+                <div class="room-icon">🚪</div>
+                <h3>Vorraum</h3>
+                <p>Wartebereich</p>
+            </div>
+            <div class="room-card">
+                <div class="room-icon">🙏</div>
+                <h3>Gebetsraum</h3>
+                <p>Gemeinsames Gebet</p>
+            </div>
+        </div>
 
-            <section>
-                <h2>Publish my map</h2>
-                <p>Register your room on WorkAdventure!</p>
-                <p>Copy and paste the map URL in WorkAdventure's administration panel:</p>
-                <p><span id="tmjURL" class="url-box url"></span></p>
-            </section>
+        <p class="description">
+            Willkommen im virtuellen Gebetsraum. Hier können Sie sich mit anderen
+            zum gemeinsamen Gebet treffen. Starten Sie im Video-Raum, warten Sie
+            im Vorraum und treten Sie dann in den Gebetsraum ein.
+        </p>
 
-            <section>
-                <h2>Connect and get help</h2>
-                <div>
-                    <div class="socials">
-                        <a href="https://discord.gg/G6Xh9ZM9aR" target="_blank" title="discord">
-                            <img src="/images/discord.png" alt="discord">
-                        </a>
-                        <a href="https://github.com/thecodingmachine/workadventure" target="_blank" title="github">
-                            <img src="/images/github.png" alt="github">
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCXJ9igV-kb9gw1ftR33y5tA" target="_blank" title="youtube">
-                            <img src="/images/youtube.png" alt="youtube">
-                        </a>
-                        <a href="https://twitter.com/Workadventure_" target="_blank" title="twitter">
-                            <img src="/images/twitter.png" alt="twitter">
-                        </a>
-                        <a href="https://www.instagram.com/workadventure_" target="_blank" title="instagram">
-                            <img src="/images/instagram.png" alt="instagram">
-                        </a>
-                        <a href="https://www.linkedin.com/company/workadventu-re" target="_blank" title="linkedin">
-                            <img src="/images/linkedin.png" alt="linkedin">
-                        </a>
-                    </div>
+        <a id="enterRoomURL" href="#" class="enter-button">Raum betreten</a>
 
-                    <div>
-                        <a href="https://www.youtube.com/watch?v=lu1IZgBJJD4&list=PL7jmrMKZfjCnz36FvezxJ-Tshuh3Zz-nc&ab_channel=WorkAdventure"
-                        target="_blank">Watch tutorials</a>
-                        <a href="https://discord.gg/G6Xh9ZM9aR" target="_blank">Talk to the community</a>
-                    </div>
-                </div>
-            </section>
-        </main>
+        <p class="info">Bewegen Sie sich mit den Pfeiltasten oder WASD</p>
     </div>
-    <footer>
-        <a href="https://workadventu.re/" target="_blank" title="workadventu.re">&copy; WorkAdventure</a>
-    </footer>
 </body>
 
 </html>

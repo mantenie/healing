@@ -2,35 +2,20 @@
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 
-console.log('Script started successfully');
+console.log('Heilungsgebet Script gestartet');
 
-let currentPopup: any = undefined;
-
-// Waiting for the API to be ready
+// Warten auf API-Bereitschaft
 WA.onInit().then(() => {
-    console.log('Scripting API ready');
-    console.log('Player tags: ',WA.player.tags)
+    console.log('Scripting API bereit');
 
-    WA.room.area.onEnter('clock').subscribe(() => {
-        const today = new Date();
-        const time = today.getHours() + ":" + today.getMinutes();
-        currentPopup = WA.ui.openPopup("clockPopup", "It's " + time, []);
-    })
+    // Willkommensnachricht anzeigen
+    WA.chat.sendChatMessage('Willkommen im Heilungsgebet-Raum! Bewege dich mit den Pfeiltasten.', 'System');
 
-    WA.room.area.onLeave('clock').subscribe(closePopup)
-
-    // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
+    // Die Scripting API Extra Bibliothek initialisieren
     bootstrapExtra().then(() => {
-        console.log('Scripting API Extra ready');
+        console.log('Scripting API Extra bereit');
     }).catch(e => console.error(e));
 
 }).catch(e => console.error(e));
-
-function closePopup(){
-    if (currentPopup !== undefined) {
-        currentPopup.close();
-        currentPopup = undefined;
-    }
-}
 
 export {};
